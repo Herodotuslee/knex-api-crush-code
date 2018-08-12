@@ -1,0 +1,26 @@
+{
+  "name": "knex-api-crush-code",
+  "version": "1.0.0",
+  "description": "![erd image](https://gyazo.com/be1d5d72efe51a194857f5600a28cb4b.png)",
+  "main": "knexfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gSchool/knex-api-crush-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gSchool/knex-api-crush-code/issues"
+  },
+  "homepage": "https://github.com/gSchool/knex-api-crush-code#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "pg": "^7.4.3"
+  }
+}
