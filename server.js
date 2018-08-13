@@ -201,10 +201,56 @@ app.delete('/bus_stops/:id',(req,res)=>{
   })
 })
 
+
+
+
+
+// As a user, when I make a GET request to /bus_stops/:bus_route_id I should g
+// et back an array of all bus stops that exist along the given bus_route.
+app.get('/bus_stops/show/:bus_route_id',(req,res)=>{
+  knex.select()
+  .from('bus_stop')
+  .join('bus_info','bus_info.bus_stop_id','bus_stop.id')
+  .where('bus_info.bus_route_id',req.params.bus_route_id)
+  .then((result) => {
+    res.send(result);
+  })
+})
+
+
+// As a user, when I make a GET request to /bus_routes/:bus_id I should get back
+//  an array of all bus routes that exist along the given bus.
+
+app.get('/bus_routes/show/:bus_id',(req,res)=>{
+  knex.select()
+  .from('bus_route')
+  // .join('bus_info','bus_info.bus_stop_id','bus_stop.id')
+  .where('bus_route.bus_id',req.params.bus_id)
+  .then((result) => {
+    res.send(result);
+  })
+})
+
+
+// As a user, when I make a GET request to /buses/:id/full_info I should get ba
+// ck an object containing the bus information, an array of bus_route objects, and wi
+// thin those bus_route objects there should be an array of bus_stops for the route.
+
+app.get('/buses/:id/full_info',(req,res)=>{
+  knex.select()
+  .from('bus_route')
+  // .leftjoin('bus_info','bus_info.bus_stop_id','bus_stop.id')
+  .where('bus_route.bus_id',req.params.id)
+  .then((result) => {
+    res.send(result);
+  })
+})
+
 //MIDDLEWARE 404
 app.use((req, res)=>{
   res.sendStatus(404);
 })
+
 
 
 app.listen(port, function() {
